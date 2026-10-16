@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0c679d">
+  <meta name="description" content="Game petualangan ninja edukatif 2D untuk murid kelas 1–6 SD.">
+  <title>Petualangan Ninja Cerdas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="sky-layer" aria-hidden="true">
+    <div class="sun-glow"></div>
+    <div class="cloud cloud-one"></div><div class="cloud cloud-two"></div><div class="cloud cloud-three"></div>
+    <svg class="bird bird-one" viewBox="0 0 48 20"><path d="M2 13 Q12 1 24 13 Q36 1 46 13"/></svg>
+    <svg class="bird bird-two" viewBox="0 0 48 20"><path d="M2 13 Q12 1 24 13 Q36 1 46 13"/></svg>
+    <svg class="bird bird-three" viewBox="0 0 48 20"><path d="M2 13 Q12 1 24 13 Q36 1 46 13"/></svg>
+  </div>
+
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#menu" id="brandHome" aria-label="Kembali ke menu utama">
+        <span class="brand-mark" aria-hidden="true">忍</span>
+        <span><strong>PETUALANGAN</strong><small>NINJA CERDAS</small></span>
+      </a>
+      <div class="topbar-right">
+        <span class="curriculum-chip">SD KELAS 1–6 · PEMBELAJARAN MENDALAM</span>
+        <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="true" title="Aktifkan atau matikan suara">♫ Suara: ON</button>
+      </div>
+    </header>
+
+    <section id="menuView" class="view menu-view" aria-labelledby="mainTitle">
+      <div class="menu-hero">
+        <div class="hero-copy">
+          <span class="eyebrow"><span class="pulse-dot"></span> GAME EDUKASI 2D · PETUALANGAN & MISI</span>
+          <h1 id="mainTitle">Petualangan<br><em>Ninja Cerdas</em></h1>
+          <p class="hero-subtitle">Bergerak, menghindar, bertarung, dan taklukkan 10 tantangan pelajaran. Setiap jawaban benar membuatmu selangkah lebih dekat menjadi ninja hebat!</p>
+          <div class="hero-features" aria-label="Fitur permainan">
+            <span>✦ Misi belajar</span><span>⚔ Jurus ninja</span><span>★ Hadiah bintang</span>
+          </div>
+          <div class="scene-note"><span>風</span><p><b>Desa Daun · Hutan Latihan</b><small>Petualangan baru menantimu, shinobi muda!</small></p></div>
+        </div>
+
+        <div class="setup-card">
+          <div class="setup-heading"><span class="heading-icon">影</span><div><h2>Siapkan Misi</h2><p>Pilih tim dan tantangan belajarmu</p></div></div>
+
+          <div class="field-block">
+            <div class="field-label"><span>01</span> Pilih formasi tim</div>
+            <div class="option-row mode-options" role="group" aria-label="Formasi tim">
+              <button class="choice active" data-mode="solo" type="button"><span class="choice-emoji">🥷</span><b>Solo</b><small>1 pemain</small></button>
+              <button class="choice" data-mode="duo" type="button"><span class="choice-emoji">🥷🥷</span><b>Duo</b><small>2 pemain</small></button>
+              <button class="choice" data-mode="squad" type="button"><span class="choice-emoji">⚔️</span><b>Squad</b><small>3 pemain</small></button>
+            </div>
+          </div>
+
+          <div class="field-block">
+            <div class="field-label"><span>02</span> Pilih kelas</div>
+            <div class="option-row grade-options" role="group" aria-label="Kelas sekolah dasar">
+              <button class="grade-choice active" data-grade="1" type="button">1</button>
+              <button class="grade-choice" data-grade="2" type="button">2</button>
+              <button class="grade-choice" data-grade="3" type="button">3</button>
+              <button class="grade-choice" data-grade="4" type="button">4</button>
+              <button class="grade-choice" data-grade="5" type="button">5</button>
+              <button class="grade-choice" data-grade="6" type="button">6</button>
+            </div>
+          </div>
+
+          <div class="field-block">
+            <div class="field-label"><span>03</span> Pilih tingkat tantangan</div>
+            <div class="difficulty-options" role="group" aria-label="Tingkat tantangan">
+              <button class="difficulty-choice active" data-difficulty="mudah" type="button"><span>🍃</span><b>Mudah</b><small>Latihan santai</small></button>
+              <button class="difficulty-choice" data-difficulty="sedang" type="button"><span>🔥</span><b>Sedang</b><small>Butuh strategi</small></button>
+              <button class="difficulty-choice" data-difficulty="sulit" type="button"><span>⚡</span><b>Sulit</b><small>Uji kemampuan</small></button>
+            </div>
+          </div>
+
+          <div class="field-block subject-field">
+            <div class="field-label"><span>04</span> Pilih mata pelajaran</div>
+            <div class="subject-grid" id="subjectGrid" role="group" aria-label="Mata pelajaran"></div>
+          </div>
+
+          <div class="mission-summary" id="missionSummary"><span>🎯</span><p><b>Misi siap dimulai</b><small>10 soal · gerak dan serang dengan sentuhan</small></p><span class="summary-arrow">↗</span></div>
+          <button id="startButton" class="primary-button" type="button"><span>▶</span> MULAI PETUALANGAN <span class="button-arrow">→</span></button>
+          <button id="helpButton" class="help-link" type="button">⌁ Cara bermain & kontrol</button>
+        </div>
+      </div>
+      <div class="menu-bottom-note"><span class="leaf-icon">🍃</span> Belajar dengan memahami, mencoba, bekerja sama, dan merefleksi.</div>
+      <footer class="credit">Game ini dibuat oleh : <strong>Eko Angga Purnomo, S.Pd.</strong></footer>
+    </section>
+
+    <section id="gameView" class="view game-view" hidden aria-label="Area permainan">
+      <div class="game-topbar">
+        <button class="round-control home-control" id="homeButton" type="button" title="Kembali ke halaman awal">⌂ <span>Menu</span></button>
+        <div class="mission-title"><span class="mission-kicker" id="missionKicker">MISI NINJA</span><strong id="gameMissionTitle">Matematika · Kelas 1</strong><small id="gameMissionSub">Solo · Mudah</small></div>
+        <div class="game-top-actions"><div class="score-pill">★ <b id="scoreValue">0</b></div><button class="round-control pause-control" id="pauseButton" type="button" title="Jeda permainan">Ⅱ <span>Jeda</span></button></div>
+      </div>
+
+      <div class="battle-hud">
+        <div class="hud-person"><span class="avatar-mini">忍</span><div class="hud-details"><div class="hud-label"><b>NARUTO</b><span id="lifeText">100 / 100 HP</span></div><div class="bar-track"><div class="bar-fill life-fill" id="lifeFill"></div></div></div></div>
+        <div class="mission-progress"><div class="progress-top"><span>PROGRES MISI</span><b id="questionProgress">0 / 10</b></div><div class="bar-track"><div class="bar-fill progress-fill" id="progressFill"></div></div></div>
+        <div class="chakra-block"><span>CHAKRA</span><div class="chakra-orbs"><i></i><i></i><i></i><i></i></div><small id="chakraText">Jurus siap</small></div>
+      </div>
+
+      <div class="arena" id="arena" aria-label="Arena pertarungan. Geser jari untuk bergerak dan menyerang">
+        <div class="arena-sun"></div>
+        <div class="arena-cloud arena-cloud-a"></div><div class="arena-cloud arena-cloud-b"></div>
+        <div class="arena-birds">⌁　⌁</div>
+        <div class="arena-sign">忍 · HUTAN LATIHAN</div>
+        <div class="arena-ground"></div>
+        <div class="lane-glow lane-glow-one"></div><div class="lane-glow lane-glow-two"></div>
+        <div class="character-shadow hero-shadow" id="heroShadow"></div>
+        <div class="allies-layer" id="alliesLayer"></div>
+        <img class="character hero-character" id="heroCharacter" src="assets/hero.gif" alt="Ninja pemain" draggable="false">
+        <div class="enemy-wrap" id="enemyWrap">
+          <div class="enemy-hp"><span id="enemyName">MUSUH BAYANGAN</span><div class="enemy-track"><i id="enemyHpFill"></i></div></div>
+          <img class="character enemy-character" id="enemyCharacter" src="assets/enemy.gif" alt="Musuh bergerak" draggable="false">
+        </div>
+        <div class="character-shadow enemy-shadow" id="enemyShadow"></div>
+        <div class="arena-toast" id="arenaToast" aria-live="polite"></div>
+        <div class="arena-bottom-hint"><span class="hint-key">GESER</span> bergerak · <span class="hint-key">SERANG</span> dekat musuh</div>
+      </div>
+
+      <div class="battle-controls">
+        <div class="movement-pad">
+          <div class="control-label">GERAK & HINDAR</div>
+          <div class="dpad">
+            <span class="dpad-spacer"></span><button class="control-button direction-button" data-move="up" type="button" aria-label="Maju ke jalur atas">▲</button><span class="dpad-spacer"></span>
+            <button class="control-button direction-button" data-move="left" type="button" aria-label="Mundur">◀</button><button class="control-button direction-button center-dpad" data-move="dodge" type="button" aria-label="Hindar cepat">✦</button><button class="control-button direction-button" data-move="right" type="button" aria-label="Maju">▶</button>
+            <span class="dpad-spacer"></span><button class="control-button direction-button" data-move="down" type="button" aria-label="Maju ke jalur bawah">▼</button><span class="dpad-spacer"></span>
+          </div>
+        </div>
+        <div class="action-pad">
+          <div class="control-label">JURUS NINJA</div>
+          <div class="action-buttons">
+            <button class="action-button punch-action" data-action="punch" type="button"><span>👊</span><b>Pukul</b><small>Z</small></button>
+            <button class="action-button kick-action" data-action="kick" type="button"><span>🦶</span><b>Tendang</b><small>X</small></button>
+            <button class="action-button shuriken-action" data-action="shuriken" type="button"><span>✥</span><b>Shuriken</b><small>C</small></button>
+            <button class="action-button jutsu-action" data-action="jutsu" type="button"><span>🔥</span><b>Jurus</b><small>V</small></button>
+            <button class="action-button jump-action" data-action="jump" type="button"><span>↟</span><b>Lompat</b><small>Space</small></button>
+          </div>
+        </div>
+      </div>
+      <div class="touch-tip">Tip: di HP/Papan Interaktif, geser jari ke kanan atau kiri untuk bergerak. Geser ke arah musuh untuk menyerang, dan geser atas/bawah untuk menghindar.</div>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="questionModal" hidden>
+    <section class="question-card" role="dialog" aria-modal="true" aria-labelledby="questionTitle">
+      <div class="question-top"><span class="question-badge">📜 UJIAN SHINOBI</span><span class="timer-pill" id="questionTimer">⏱ 25 dtk</span></div>
+      <div class="question-meta"><span id="questionSubject">MATEMATIKA</span><span id="questionNumber">SOAL 1 DARI 10</span></div>
+      <h2 id="questionTitle">Siap menjawab tantangan?</h2>
+      <p class="question-context" id="questionContext">Pilih jawaban paling tepat untuk mengalahkan musuh.</p>
+      <div class="answer-grid" id="answerGrid"></div>
+      <div class="answer-feedback" id="answerFeedback" aria-live="polite">Pilih jawabanmu sebelum waktu habis!</div>
+      <div class="question-footer"><span>✨ Jawaban benar = poin dan maju ke misi berikutnya</span><span id="questionStreak">KOMBO ×1</span></div>
+    </section>
+  </div>
+
+  <div class="modal-backdrop overlay-top" id="pauseModal" hidden>
+    <section class="system-card" role="dialog" aria-modal="true" aria-labelledby="pauseTitle">
+      <div class="system-emblem">Ⅱ</div><span class="eyebrow">WAKTU ISTIRAHAT</span><h2 id="pauseTitle">Petualangan dijeda</h2><p>Ambil napas, shinobi! Misi akan menunggu saat kamu siap kembali.</p>
+      <button class="primary-button" id="resumeButton" type="button">▶ LANJUTKAN MISI</button>
+      <button class="secondary-button" id="pauseHomeButton" type="button">⌂ KEMBALI KE MENU</button>
+    </section>
+  </div>
+
+  <div class="modal-backdrop overlay-top" id="resultModal" hidden>
+    <section class="system-card result-card" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+      <div class="result-sparkle" id="resultIcon">🏆</div><span class="eyebrow" id="resultEyebrow">MISI SELESAI</span><h2 id="resultTitle">Hebat, Ninja!</h2><p id="resultDescription">Kamu berhasil menyelesaikan tantangan.</p>
+      <div class="star-reward" id="starReward" aria-label="Bintang hadiah">☆ ☆ ☆</div>
+      <div class="result-stats"><div><strong id="resultScore">0</strong><small>SKOR</small></div><div><strong id="resultCorrect">0/10</strong><small>JAWABAN BENAR</small></div><div><strong id="resultHp">100%</strong><small>SISA NYAWA</small></div></div>
+      <div class="reflection-box" id="reflectionBox"><b>🌱 Refleksi pembelajaran</b><p>Bagaimana tantangan hari ini terasa bagimu?</p><div class="reflection-options"><button type="button" data-reflection="mudah">😊 Mudah</button><button type="button" data-reflection="menantang">🤔 Menantang</button><button type="button" data-reflection="latihan">💪 Perlu latihan</button></div><small id="reflectionThanks" hidden>Terima kasih sudah merefleksi pengalaman belajarmu!</small></div>
+      <button class="primary-button" id="playAgainButton" type="button">↻ MAIN LAGI</button><button class="secondary-button" id="resultHomeButton" type="button">⌂ MENU UTAMA</button>
+    </section>
+  </div>
+
+  <div class="modal-backdrop overlay-top" id="helpModal" hidden>
+    <section class="system-card help-card" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+      <button class="modal-close" id="closeHelpButton" type="button" aria-label="Tutup panduan">×</button>
+      <div class="system-emblem">🎮</div><span class="eyebrow">PANDUAN SHINOBI</span><h2 id="helpTitle">Cara Bermain</h2>
+      <div class="help-list"><p><b>🕹 Bergerak:</b> tombol arah, panah/WASD, atau geser jari ke kiri/kanan/atas/bawah di arena.</p><p><b>👊 Menyerang:</b> tekan Pukul/Tendang/Shuriken/Jurus atau tombol Z/X/C/V. Saat serangan mengenai musuh, soal akan muncul.</p><p><b>💨 Menghindar:</b> geser atas/bawah atau tekan ✦ untuk dodge. Jika terkena serangan, nyawa berkurang.</p><p><b>📚 Belajar:</b> jawab 10 soal. Jawaban benar memberi poin dan melanjutkan pertarungan; jawaban salah mengurangi nyawa.</p><p><b>⏸ Jeda:</b> tombol Jeda atau Esc. Gunakan menu untuk memulai misi baru.</p><p><b>🎵 Suara:</b> aktifkan lewat tombol Suara. Efek dibuat khusus untuk permainan ini.</p></div>
+      <button class="primary-button" id="gotItButton" type="button">SIAP BERTUALANG!</button>
+    </section>
+  </div>
+
+  <div class="sr-only" id="liveStatus" aria-live="polite"></div>
+  <script src="game.js"></script>
+</body>
+</html>
